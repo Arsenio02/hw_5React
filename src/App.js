@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const PrototypeForm = {
+    key1: 'Barbara',
+    key2: 'Hepworth',
+    key3: 'bhepworth@react.com',
+    key4: 'love cats',
+};
+
+const fieldStyle = {
+    marginBottom: '10px',
+};
+
+function SimpleForm() {
+    return (
+        <div>
+            <form>
+                {Object.keys(PrototypeForm).map((key) => (
+                    <div key={key} className="form-group" style={fieldStyle}>
+                        <label htmlFor={key} style={{ fontWeight: 'bold' }}>{key}:</label>
+                        <input type="text" id={key} name={key} value={PrototypeForm[key]} readOnly />
+                        <p>{PrototypeForm[key]}</p>
+                    </div>
+                ))}
+            </form>
+        </div>
+    );
 }
 
-export default App;
+export default SimpleForm;
